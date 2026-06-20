@@ -1,8 +1,17 @@
 #!/bin/bash
+
+# Remove the broken venv
+rm -rf .venv
+
+# Recreate it
 py -3.12 -m venv .venv
+
+# Activate it
 source .venv/Scripts/activate
 
-python -m pip install --upgrade pip
-pip install openai-whisper
+# Repair/upgrade pip
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install faster-whisper
 
-whisper "C:\Users\owner\Videos\Captures\(56) Race-Baiter Elon Musk Becomes World’s First Trillionaire - YouTube - Google Chrome 2026-06-13 01-53-13.mp4" --model small --language English --output_format txt
+whisper "C:\Users\owner\Videos\Captures\(111) Trump The Peacemaker - YouTube - Google Chrome 2026-06-19 23-09-59.mp4" --model small --language English --output_format txt
